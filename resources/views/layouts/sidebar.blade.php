@@ -29,11 +29,13 @@
                                                 class="path1"></span><span class="path2"></span></i>Buat Pesanan</a>
                                 </li>
                             @endif
-                            <li
-                                class="{{ Request::segment(1) == 'pemesanan' && Request::segment(2) != 'create' ? 'active' : '' }}">
-                                <a href="{{ route('pemesanan.index') }}"><i class="icon-Commit"><span
-                                            class="path1"></span><span class="path2"></span></i>Data Pesanan</a>
-                            </li>
+                            @if (authUser()->role == 'approver')
+                                <li
+                                    class="{{ Request::segment(1) == 'pemesanan' && Request::segment(2) != 'create' ? 'active' : '' }}">
+                                    <a href="{{ route('pemesanan.index') }}"><i class="icon-Commit"><span
+                                                class="path1"></span><span class="path2"></span></i>Data Pesanan</a>
+                                </li>
+                            @endif
                         </ul>
                     </li>
                     @if (authUser()->role == 'admin')

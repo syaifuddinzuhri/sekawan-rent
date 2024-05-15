@@ -19,7 +19,8 @@
     </div>
     <div class="mb-3">
         <div class="form-check p-0 form-switch">
-            <input class="form-check-input" type="checkbox" role="switch" id="status" onchange="changeStatus()">
+            <input class="form-check-input" type="checkbox" role="switch" id="status" onchange="changeStatus()"
+                {{ isset($data) && $data->status === 'available' ? 'checked' : '' }}>
             <label class="form-check-label" id="statusLabel"
                 for="status">{{ isset($data) && $data->status === 'available' ? 'Tersedia' : 'Tidak Tersedia' }}</label>
         </div>
