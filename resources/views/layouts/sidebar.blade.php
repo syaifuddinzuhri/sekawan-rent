@@ -29,7 +29,7 @@
                                                 class="path1"></span><span class="path2"></span></i>Buat Pesanan</a>
                                 </li>
                             @endif
-                            @if (authUser()->role == 'approver')
+                            @if (authUser()->role != 'driver')
                                 <li
                                     class="{{ Request::segment(1) == 'pemesanan' && Request::segment(2) != 'create' ? 'active' : '' }}">
                                     <a href="{{ route('pemesanan.index') }}"><i class="icon-Commit"><span

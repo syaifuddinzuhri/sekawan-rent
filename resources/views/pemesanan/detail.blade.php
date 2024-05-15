@@ -85,7 +85,12 @@
                                                             {{ $previousStatus !== 'pending' && $previousStatus !== 'rejected' && $data->status === 'pending' ? '' : 'disabled' }}>
                                                     </td>
                                                     <td>
-                                                        @if ($previousStatus !== 'pending' && $previousStatus !== 'rejected' && $data->status === 'pending')
+                                                        @if (
+                                                            $previousStatus !== 'pending' &&
+                                                                $previousStatus !== 'rejected' &&
+                                                                $data->status === 'pending' &&
+                                                                (authUser()->role === 'admin' ||
+                                                                    (authUser()->role === 'approver' && $item->user_approver_id == authUser()->id)))
                                                             <button type="submit"
                                                                 class="btn btn-sm btn-primary ms-2">Update</button>
                                                         @endif
